@@ -1,81 +1,64 @@
-# === Page and Imports ===
+# app.py
+
 import streamlit as st
-import os
-from openai import OpenAI
-from langchain_community.vectorstores import FAISS
+from langchain.vectorstores import FAISS
 from langchain_community.embeddings import HuggingFaceEmbeddings
-from langchain.document_loaders import PyPDFLoader
-from langchain.text_splitter import RecursiveCharacterTextSplitter
+from openai import OpenAI
 
-# === UI Setup ===
-st.set_page_config(
-    page_title="Strength and Hypertrophy Training Tool",
-    layout="centered"
-)
+# === Page config ===
+st.set_page_config(page_title="💪 Training Research Q&A", layout="centered")
 
-st.markdown("""
-    <style>
-        .main-title {
-            font-size: 36px;
-            font-weight: bold;
-            color: #4CAF50;
-            text-align: center;
-        }
-        .sub-title {
-            font-size: 18px;
-            color: #555;
-            text-align: center;
-            margin-bottom: 30px;
-        }
-    </style>
-    <div class='main-title'> Training Research Summariser </div>
-    <div class='sub-title'>Ask questions based on scientific papers in strength, hypertrophy, power & speed </div>
-""", unsafe_allow_html=True)
+st.title("🏋️ Strength, Power & Hypertrophy Research Assistant")
+st.markdown("Ask questions based on publicly available research papers from top sports scientists and coaches.")
 
-# === Groq API ===
+# === Use your actual Groq API key ===
 client = OpenAI(
-    base_url="https://api.groq.com/openai/v1",
-    api_key="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"  
+    api_key="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",
+    base_url="https://api.groq.com/openai/v1"
 )
 
-# === Load Vector Store ===
+# === Load vector store from disk ===
 @st.cache_resource
 def load_retriever():
-    embedding_model = HuggingFaceEmbeddings(model_name="sentence-transformers/paraphrase-MiniLM-L3-v2")
-    return FAISS.load_local("vector_store", embedding_model, allow_dangerous_deserialization=True).as_retriever()
+    embedding_model = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
+    vector_store = FAISS.load_local("vector_store", embedding_model, allow_dangerous_deserialization=True)
+    return vector_store.as_retriever()
 
 retriever = load_retriever()
 
-# === LLM Answer Generator ===
+# === Q&A function ===
 def generate_answer(query):
     docs = retriever.get_relevant_documents(query)
-    context = "\n\n".join([doc.page_content for doc in docs])
+    context = "\n\n".join([doc.page_content for doc in docs[:3]])
 
-    prompt = f"""Answer the question using the context below. Be clear and concise.
-
-Context:
-{context}
-
-Question: {query}
-Answer:"""
+    messages = [
+        {"role": "system", "content": "You are a helpful assistant that summarizes sports science training papers."},
+        {"role": "user", "content": f"Answer the question using the context below.\n\nContext:\n{context}\n\nQuestion: {query}"}
+    ]
 
     response = client.chat.completions.create(
         model="llama3-8b-8192",
-        messages=[{"role": "user", "content": prompt}],
-        temperature=0.5,
-        max_tokens=300,
-        top_p=1,
+        messages=messages,
+        temperature=0.3,
+        max_tokens=512
     )
-    return response.choices[0].message.content.strip()
 
-# === User Input ===
-query = st.text_input("📝 Ask a training question:")
+    return response.choices[0].message.content.strip(), docs
 
+# === User input ===
+query = st.text_input("💬 Ask your training question here:")
 if query:
     with st.spinner("Thinking..."):
-        answer = generate_answer(query)
-        st.success("✅ Here's what I found:")
-        st.markdown(answer)
+        answer, docs = generate_answer(query)
+
+    st.markdown("### 🧠 Answer")
+    st.write(answer)
+
+    st.markdown("### 🔍 References")
+    for i, doc in enumerate(docs):
+        source = doc.metadata.get("source", "Unknown source")
+        st.markdown(f"- Document {i+1}: `{source}`")
+
 
 # === Footer Disclaimer ===
 st.markdown("""<hr style="margin-top: 2em; margin-bottom: 1em;">""", unsafe_allow_html=True)

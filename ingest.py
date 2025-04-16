@@ -1,29 +1,27 @@
-import os
+# ingest.py
 from langchain.document_loaders import PyPDFLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.vectorstores import FAISS
+from langchain_community.embeddings import HuggingFaceEmbeddings
+import os
 
-# === Config ===
-PDF_DIR = "data"
-VECTOR_STORE_DIR = "vector_store"
+# === Load PDFs ===
+pdf_folder = "data"
+pdf_files = [f for f in os.listdir(pdf_folder) if f.endswith(".pdf")]
 
-def ingest_pdfs():
-    all_docs = []
-    for file_name in os.listdir(PDF_DIR):
-        if file_name.endswith(".pdf"):
-            loader = PyPDFLoader(os.path.join(PDF_DIR, file_name))
-            docs = loader.load()
-            all_docs.extend(docs)
+documents = []
+for file in pdf_files:
+    loader = PyPDFLoader(os.path.join(pdf_folder, file))
+    documents.extend(loader.load())
 
-    splitter = RecursiveCharacterTextSplitter(chunk_size=800, chunk_overlap=100)
-    split_docs = splitter.split_documents(all_docs)
+# === Split text ===
+splitter = RecursiveCharacterTextSplitter(chunk_size=800, chunk_overlap=100)
+chunks = splitter.split_documents(documents)
 
-    embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/paraphrase-MiniLM-L3-v2")
+# === Embed and store ===
+embedding_model = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
+vector_store = FAISS.from_documents(chunks, embedding_model)
 
-    vector_store = FAISS.from_documents(split_docs, embeddings)
-    vector_store.save_local(VECTOR_STORE_DIR)
-    print(f" Ingested {len(split_docs)} chunks and saved to {VECTOR_STORE_DIR}")
-
-if __name__ == "__main__":
-    ingest_pdfs()
+# === Save to disk ===
+vector_store.save_local("vector_store")
+print("✅ Vector store saved to local folder 'vector_store'")
