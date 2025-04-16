@@ -11,7 +11,7 @@ st.set_page_config(page_title="Training Research Q&A", layout="centered")
 st.title("Strength, Power & Hypertrophy Research Assistant")
 st.markdown("Ask questions based on publicly available research papers.")
 
-# === Use your actual Groq API key ===
+# === API ===
 client = OpenAI(
     api_key="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",
     base_url="https://api.groq.com/openai/v1"
