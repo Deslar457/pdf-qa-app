@@ -8,8 +8,8 @@ from openai import OpenAI
 # === Page config ===
 st.set_page_config(page_title="💪 Training Research Q&A", layout="centered")
 
-st.title("🏋️ Strength, Power & Hypertrophy Research Assistant")
-st.markdown("Ask questions based on publicly available research papers from top sports scientists and coaches.")
+st.title("Strength, Power & Hypertrophy Research Assistant")
+st.markdown("Ask questions based on publicly available research papers .")
 
 # === Use your actual Groq API key ===
 client = OpenAI(
@@ -39,7 +39,7 @@ def generate_answer(query):
     response = client.chat.completions.create(
         model="llama3-8b-8192",
         messages=messages,
-        temperature=0.3,
+        temperature=0.5,
         max_tokens=512
     )
 
@@ -51,7 +51,7 @@ if query:
     with st.spinner("Thinking..."):
         answer, docs = generate_answer(query)
 
-    st.markdown("### 🧠 Answer")
+    st.markdown("### Answer")
     st.write(answer)
 
     st.markdown("### 🔍 References")
