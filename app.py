@@ -10,7 +10,7 @@ st.title("Strength, Power & Hypertrophy Research Assistant")
 st.markdown("Ask questions based on publicly available training research papers.")
 
 # === Load API key from secrets.toml ===
-api_key = st.secrets["GROQ_API_KEY"]
+api_key = os.getenv("GROQ_API_KEY") or st.secrets["GROQ_API_KEY"]
 
 # === Set up Groq LLaMA 3 client ===
 client = OpenAI(
@@ -29,7 +29,7 @@ retriever = load_retriever()
 
 # === Answer generation ===
 def generate_answer(query):
-    docs = retriever.get_relevant_documents(query)
+    docs = retriever.invoke(query)
     context = "\n\n".join([doc.page_content for doc in docs[:3]])
 
     messages = [
