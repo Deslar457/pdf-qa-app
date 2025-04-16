@@ -1,27 +1,24 @@
 import os
 import streamlit as st
+from openai import OpenAI
 from langchain_community.vectorstores import FAISS
 from langchain_community.embeddings import HuggingFaceEmbeddings
-from openai import OpenAI
-from dotenv import load_dotenv
 
-# === Load environment variables ===
-load_dotenv()
-api_key = os.getenv("GROQ_API_KEY", st.secrets.get("GROQ_API_KEY"))
+# === Page setup ===
+st.set_page_config(page_title="Training Research Q&A", layout="centered")
+st.title("Strength, Power & Hypertrophy Research Assistant")
+st.markdown("Ask questions based on publicly available training research papers.")
 
-# === Groq-compatible OpenAI client ===
+# === Load API key from secrets.toml ===
+api_key = st.secrets["GROQ_API_KEY"]
+
+# === Set up Groq LLaMA 3 client ===
 client = OpenAI(
     api_key=api_key,
     base_url="https://api.groq.com/openai/v1"
 )
 
-# === Streamlit page setup ===
-st.set_page_config(page_title="Training Research Q&A", layout="centered")
-
-st.title("Strength, Power & Hypertrophy Research Assistant")
-st.markdown("Ask questions based on publicly available research papers.")
-
-# === Load precomputed vector store ===
+# === Load vector store once ===
 @st.cache_resource
 def load_retriever():
     embedding_model = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
@@ -30,39 +27,38 @@ def load_retriever():
 
 retriever = load_retriever()
 
-# === Q&A logic ===
+# === Answer generation ===
 def generate_answer(query):
     docs = retriever.get_relevant_documents(query)
     context = "\n\n".join([doc.page_content for doc in docs[:3]])
 
     messages = [
-        {"role": "system", "content": "You are a helpful assistant that summarizes sports science training papers."},
-        {"role": "user", "content": f"Answer the question using the context below.\n\nContext:\n{context}\n\nQuestion: {query}"}
+        {"role": "system", "content": "You are a helpful assistant that summarizes sports science training research papers."},
+        {"role": "user", "content": f"Use the following context to answer the question.\n\nContext:\n{context}\n\nQuestion: {query}"}
     ]
 
     response = client.chat.completions.create(
         model="llama3-8b-8192",
         messages=messages,
-        temperature=0.5,
+        temperature=0.3,
         max_tokens=512
     )
 
     return response.choices[0].message.content.strip(), docs
 
-# === User interface ===
-query = st.text_input("💬 Ask your training question here:")
+# === User input ===
+query = st.text_input("💬 Ask a training question:")
 if query:
     with st.spinner("Thinking..."):
         answer, docs = generate_answer(query)
 
-    st.markdown("### Answer")
+    st.markdown("### ✅ Answer")
     st.write(answer)
 
-    st.markdown("### 🔍 References")
+    st.markdown("### 📚 References")
     for i, doc in enumerate(docs):
         source = doc.metadata.get("source", "Unknown source")
         st.markdown(f"- Document {i+1}: `{source}`")
-
 # === Footer Disclaimer ===
 st.markdown("""<hr style="margin-top: 2em; margin-bottom: 1em;">""", unsafe_allow_html=True)
 with st.expander("📘 Disclaimer: About the Data Used"):
