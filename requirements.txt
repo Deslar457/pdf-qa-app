@@ -1,6 +1,7 @@
 streamlit
 langchain
 faiss-cpu
-openai
 transformers
+accelerate
 sentence-transformers
+openai
