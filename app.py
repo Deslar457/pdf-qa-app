@@ -4,14 +4,12 @@ import streamlit as st
 from langchain.vectorstores import FAISS
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from openai import OpenAI
-from langchain.embeddings.openai import OpenAIEmbeddings
-
 
 # === Page config ===
-st.set_page_config(page_title=" Training Research Q&A", layout="centered")
+st.set_page_config(page_title="Training Research Q&A", layout="centered")
 
 st.title("Strength, Power & Hypertrophy Research Assistant")
-st.markdown("Ask questions based on publicly available research papers .")
+st.markdown("Ask questions based on publicly available research papers.")
 
 # === Use your actual Groq API key ===
 client = OpenAI(
@@ -22,10 +20,9 @@ client = OpenAI(
 # === Load vector store from disk ===
 @st.cache_resource
 def load_retriever():
-    embedding_model = OpenAIEmbeddings(
-    openai_api_key="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",  # your Groq key
-    model="text-embedding-3-small"  # a fast, lightweight embedding model
-)
+    embedding_model = HuggingFaceEmbeddings(
+        model_name="sentence-transformers/all-MiniLM-L6-v2"
+    )
     vector_store = FAISS.load_local("vector_store", embedding_model, allow_dangerous_deserialization=True)
     return vector_store.as_retriever()
 
@@ -64,7 +61,6 @@ if query:
         source = doc.metadata.get("source", "Unknown source")
         st.markdown(f"- Document {i+1}: `{source}`")
 
-
 # === Footer Disclaimer ===
 st.markdown("""<hr style="margin-top: 2em; margin-bottom: 1em;">""", unsafe_allow_html=True)
 with st.expander("📘 Disclaimer: About the Data Used"):
@@ -85,6 +81,5 @@ with st.expander("📘 Disclaimer: About the Data Used"):
     - *Resisted Sled Sprint Training: Systematic Review* – Petrakos et al. (2015)  
     - *Maximizing Muscle Hypertrophy: Advanced Techniques* – Krzysztofik et al. (2019)  
 
-    These sources are provided strictly for educational purposes.  
+    These sources are provided strictly for educational purposes.
     """)
-
