@@ -1,6 +1,7 @@
 import os
 import streamlit as st
 from openai import OpenAI
+import numpy as np
 from langchain_community.vectorstores import FAISS
 from langchain_community.embeddings import HuggingFaceEmbeddings
 
