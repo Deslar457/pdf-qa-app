@@ -9,7 +9,7 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 
 # === UI Setup ===
 st.set_page_config(
-    page_title="Strength and Hypertrophy Recommendations Tool",
+    page_title="Strength and Hypertrophy Training Tool",
     page_icon="💪",
     layout="centered"
 )
@@ -29,8 +29,8 @@ st.markdown("""
             margin-bottom: 30px;
         }
     </style>
-    <div class='main-title'> Strength and Hypertrophy Training Tool</div>
-    <div class='sub-title'>Ask questions about training </div>
+    <div class='main-title'> Training Research Summariser </div>
+    <div class='sub-title'>Ask questions based on scientific papers in strength, hypertrophy, power & speed </div>
 """, unsafe_allow_html=True)
 
 # === Groq API ===
@@ -77,3 +77,27 @@ if query:
         answer = generate_answer(query)
         st.success("✅ Here's what I found:")
         st.markdown(answer)
+
+# === Footer Disclaimer ===
+st.markdown("""<hr style="margin-top: 2em; margin-bottom: 1em;">""", unsafe_allow_html=True)
+with st.expander("📘 Disclaimer: About the Data Used"):
+    st.markdown("""
+    This application uses Retrieval-Augmented Generation (RAG) to answer questions based on **publicly available research papers** in the field of strength, power, and hypertrophy training.  
+    The app currently includes insights from the following works:
+
+    - *Training Methodology and Concepts of Dr. Anatoli Bondarchuk* – G. Martin Bingisser (2005)  
+    - *The Structure of Training for Speed* – Charlie Francis (2005)  
+    - *Power vs. Strength–Power Jump Squat Training* – Cormie et al. (2007)  
+    - *Effect of Different Sprint Training Methods: A Brief Review* – Rumpf et al. (2016)  
+    - *Mechanisms of Muscle Hypertrophy* – Schoenfeld (2010)  
+    - *Velocity-Based Training: From Theory to Application* – Weakley et al. (2020)  
+    - *Transfer Effect of Strength and Power Training to Sprint Kinematics* – Barr et al. (2014)  
+    - *The Importance of Muscular Strength* – Suchomel et al. (2016)  
+    - *Maximizing Strength Development in Athletes* – Peterson et al. (2004)  
+    - *Resistance Training Recommendations – IUSCA Position Stand* – Schoenfeld et al. (2021)  
+    - *Resisted Sled Sprint Training: Systematic Review* – Petrakos et al. (2015)  
+    - *Maximizing Muscle Hypertrophy: Advanced Techniques* – Krzysztofik et al. (2019)  
+
+    These sources are provided strictly for educational purposes.  
+    """)
+
