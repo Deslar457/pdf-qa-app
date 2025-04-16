@@ -1,8 +1,11 @@
 # app.py
 
 import streamlit as st
+import os
 from langchain.vectorstores import FAISS
 from langchain_community.embeddings import HuggingFaceEmbeddings
+from dotenv import load_dotenv
+load_dotenv()
 from openai import OpenAI
 
 # === Page config ===
@@ -13,11 +16,10 @@ st.markdown("Ask questions based on publicly available research papers.")
 
 # === API ===
 client = OpenAI(
-    api_key="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",
+    api_key=os.environ.get("GROQ_API_KEY"),
     base_url="https://api.groq.com/openai/v1"
 )
-
-# === Load vector store from disk ===
+# === Load vector store ===
 @st.cache_resource
 def load_retriever():
     embedding_model = HuggingFaceEmbeddings(
