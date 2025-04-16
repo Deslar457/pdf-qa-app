@@ -6,3 +6,4 @@ transformers
 accelerate
 sentence-transformers
 openai
+numpy
