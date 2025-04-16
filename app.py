@@ -1,36 +1,36 @@
-# app.py
-
-import streamlit as st
 import os
-from langchain.vectorstores import FAISS
+import streamlit as st
+from langchain_community.vectorstores import FAISS
 from langchain_community.embeddings import HuggingFaceEmbeddings
-from dotenv import load_dotenv
-load_dotenv()
 from openai import OpenAI
+from dotenv import load_dotenv
 
-# === Page config ===
+# === Load environment variables ===
+load_dotenv()
+api_key = os.getenv("GROQ_API_KEY", st.secrets.get("GROQ_API_KEY"))
+
+# === Groq-compatible OpenAI client ===
+client = OpenAI(
+    api_key=api_key,
+    base_url="https://api.groq.com/openai/v1"
+)
+
+# === Streamlit page setup ===
 st.set_page_config(page_title="Training Research Q&A", layout="centered")
 
 st.title("Strength, Power & Hypertrophy Research Assistant")
 st.markdown("Ask questions based on publicly available research papers.")
 
-# === API ===
-client = OpenAI(
-    api_key=os.environ.get("GROQ_API_KEY"),
-    base_url="https://api.groq.com/openai/v1"
-)
-# === Load vector store ===
+# === Load precomputed vector store ===
 @st.cache_resource
 def load_retriever():
-    embedding_model = HuggingFaceEmbeddings(
-        model_name="sentence-transformers/all-MiniLM-L6-v2"
-    )
+    embedding_model = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
     vector_store = FAISS.load_local("vector_store", embedding_model, allow_dangerous_deserialization=True)
     return vector_store.as_retriever()
 
 retriever = load_retriever()
 
-# === Q&A function ===
+# === Q&A logic ===
 def generate_answer(query):
     docs = retriever.get_relevant_documents(query)
     context = "\n\n".join([doc.page_content for doc in docs[:3]])
@@ -49,7 +49,7 @@ def generate_answer(query):
 
     return response.choices[0].message.content.strip(), docs
 
-# === User input ===
+# === User interface ===
 query = st.text_input("💬 Ask your training question here:")
 if query:
     with st.spinner("Thinking..."):
