@@ -24,4 +24,4 @@ vector_store = FAISS.from_documents(chunks, embedding_model)
 
 # === Save to disk ===
 vector_store.save_local("vector_store")
-print("✅ Vector store saved to local folder 'vector_store'")
+print(" Vector store saved to local folder 'vector_store'")
