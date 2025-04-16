@@ -30,7 +30,7 @@ st.markdown("""
         }
     </style>
     <div class='main-title'> Strength and Hypertrophy Training Tool</div>
-    <div class='sub-title'>Ask questions about your training, exercises, and muscle growth strategies</div>
+    <div class='sub-title'>Ask questions about strength or hypertrophy training </div>
 """, unsafe_allow_html=True)
 
 # === Groq API ===
@@ -61,7 +61,7 @@ Question: {query}
 Answer:"""
 
     response = client.chat.completions.create(
-        model="mixtral-8x7b-32768",
+        model="llama3-8b-8192",
         messages=[{"role": "user", "content": prompt}],
         temperature=0.5,
         max_tokens=300,
