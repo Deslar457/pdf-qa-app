@@ -4,6 +4,8 @@ import streamlit as st
 from langchain.vectorstores import FAISS
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from openai import OpenAI
+from langchain.embeddings.openai import OpenAIEmbeddings
+
 
 # === Page config ===
 st.set_page_config(page_title=" Training Research Q&A", layout="centered")
@@ -20,7 +22,10 @@ client = OpenAI(
 # === Load vector store from disk ===
 @st.cache_resource
 def load_retriever():
-    embedding_model = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
+    embedding_model = OpenAIEmbeddings(
+    openai_api_key="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",  # your Groq key
+    model="text-embedding-3-small"  # a fast, lightweight embedding model
+)
     vector_store = FAISS.load_local("vector_store", embedding_model, allow_dangerous_deserialization=True)
     return vector_store.as_retriever()
 
