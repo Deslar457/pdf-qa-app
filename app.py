@@ -6,7 +6,7 @@ from langchain_community.embeddings import HuggingFaceEmbeddings
 from openai import OpenAI
 
 # === Page config ===
-st.set_page_config(page_title="💪 Training Research Q&A", layout="centered")
+st.set_page_config(page_title=" Training Research Q&A", layout="centered")
 
 st.title("Strength, Power & Hypertrophy Research Assistant")
 st.markdown("Ask questions based on publicly available research papers .")
