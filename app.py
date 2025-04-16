@@ -30,13 +30,13 @@ st.markdown("""
         }
     </style>
     <div class='main-title'> Strength and Hypertrophy Training Tool</div>
-    <div class='sub-title'>Ask questions about strength or hypertrophy training </div>
+    <div class='sub-title'>Ask questions about training </div>
 """, unsafe_allow_html=True)
 
 # === Groq API ===
 client = OpenAI(
     base_url="https://api.groq.com/openai/v1",
-    api_key="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"  # Replace with env var if needed
+    api_key="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"  
 )
 
 # === Load Vector Store ===

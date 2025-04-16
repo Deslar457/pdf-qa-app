@@ -16,7 +16,7 @@ def ingest_pdfs():
             docs = loader.load()
             all_docs.extend(docs)
 
-    splitter = RecursiveCharacterTextSplitter(chunk_size=200, chunk_overlap=20)
+    splitter = RecursiveCharacterTextSplitter(chunk_size=800, chunk_overlap=100)
     split_docs = splitter.split_documents(all_docs)
 
     embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/paraphrase-MiniLM-L3-v2")
