@@ -10,7 +10,6 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 # === UI Setup ===
 st.set_page_config(
     page_title="Strength and Hypertrophy Training Tool",
-    page_icon="💪",
     layout="centered"
 )
 

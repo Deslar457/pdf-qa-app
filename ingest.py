@@ -23,7 +23,7 @@ def ingest_pdfs():
 
     vector_store = FAISS.from_documents(split_docs, embeddings)
     vector_store.save_local(VECTOR_STORE_DIR)
-    print(f"✅ Ingested {len(split_docs)} chunks and saved to {VECTOR_STORE_DIR}")
+    print(f" Ingested {len(split_docs)} chunks and saved to {VECTOR_STORE_DIR}")
 
 if __name__ == "__main__":
     ingest_pdfs()
