@@ -67,18 +67,33 @@ with st.expander("📘 Disclaimer: About the Data Used"):
     This application uses Retrieval-Augmented Generation (RAG) to answer questions based on **publicly available research papers** in the field of strength, power, and hypertrophy training.  
     The app currently includes insights from the following works:
 
-    - *Training Methodology and Concepts of Dr. Anatoli Bondarchuk* – G. Martin Bingisser (2005)  
-    - *The Structure of Training for Speed* – Charlie Francis (2005)  
-    - *Power vs. Strength–Power Jump Squat Training* – Cormie et al. (2007)  
-    - *Effect of Different Sprint Training Methods: A Brief Review* – Rumpf et al. (2016)  
-    - *Mechanisms of Muscle Hypertrophy* – Schoenfeld (2010)  
-    - *Velocity-Based Training: From Theory to Application* – Weakley et al. (2020)  
-    - *Transfer Effect of Strength and Power Training to Sprint Kinematics* – Barr et al. (2014)  
-    - *The Importance of Muscular Strength* – Suchomel et al. (2016)  
-    - *Maximizing Strength Development in Athletes* – Peterson et al. (2004)  
-    - *Resistance Training Recommendations – IUSCA Position Stand* – Schoenfeld et al. (2021)  
-    - *Resisted Sled Sprint Training: Systematic Review* – Petrakos et al. (2015)  
-    - *Maximizing Muscle Hypertrophy: Advanced Techniques* – Krzysztofik et al. (2019)  
+    -This app uses Retrieval-Augmented Generation (RAG) to answer questions based on **open-access and institutionally accessed research papers** in the fields of strength, hypertrophy, and sprint training.  
 
+    The current knowledge base includes the following works:
+
+    - *A Meta-Analysis of the Effects of Strength Training on Physical Fitness in Dancers*  
+    - *A Randomized Controlled Trial of Unresisted vs Heavily Resisted Sprint Training in Youth Rugby Players*  
+    - *A Systematic Review on Resistance and Plyometric Training Effects on Youth Athletes*  
+    - *Effects of Eccentric Resistance Training on Physical Fitness in Youth Athletes – A Systematic Review*  
+    - *Maximal Strength Development During Concurrent Endurance & Resistance Training – Meta-Analysis*  
+    - *Free Weights vs Machines for Hypertrophy and Jump Performance – A Systematic Review*  
+    - *Sprint Training at Different Speeds: Neuromuscular & Running Economy Effects*  
+    - *Autoregulation Methods for Hypertrophy Training*  
+    - *Effects of Complex Training on Running Economy & Strength*  
+    - *Resistance Training in Adolescent Swimmers – A Systematic Review*  
+    - *Effects of Resistance Training Modalities on Male Adult Muscle Hypertrophy – Meta-Analysis*  
+    - *Sprint and Endurance Concurrent Training in Endurance Athletes – A Meta Review*  
+    - *Effects of Resistance Training Load on Youth Athletes – Meta-Analysis*  
+    - *Jump Squat Performance Based on Load in Rugby Players – Comparative Study*  
+    - *Sprint Training in Rugby: Practical Applications – Systematic Review*  
+    - *Concurrent Endurance & Resistance Training in Women – Systematic Review*  
+    - *Training Practices of Brazilian Olympic Sprint & Jump Coaches*  
+    - *Effects of Sprint Training Modes on Rugby Union Players – Systematic Review*  
+    - *High vs Low Load Resistance Training for Hypertrophy – Meta-Analysis*  
+    - *Autoregulation Strategies in Resistance Training – Meta-Analysis*  
+    - *Physiological Effects of Strength and Sprint Training – A Meta Review*  
+    - *Training Effects on Sprint Performance in Elite Athletes – Meta-Analysis*  
+    - *Effects of Sprint Training on Speed & Agility in Basketball Players – Review*  
+    - *Field & Resistance Training Loads in Pre-Season Rugby – Positional Comparisons* 
     These sources are provided strictly for educational purposes.
     """)
