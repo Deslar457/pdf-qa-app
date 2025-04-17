@@ -5,7 +5,7 @@ from langchain_community.embeddings import HuggingFaceEmbeddings
 
 import os
 
-# === Path to your new PDFs ===
+# === Path to PDFs ===
 pdf_folder = "data"
 pdf_files = [f for f in os.listdir(pdf_folder) if f.endswith(".pdf")]
 
