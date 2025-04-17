@@ -7,7 +7,7 @@ from langchain_community.embeddings import HuggingFaceEmbeddings
 
 # === Page setup ===
 st.set_page_config(page_title="Training Research Q&A", layout="centered")
-st.title("Strength, Power & Hypertrophy Research Assistant")
+st.title("Strength Training Research Assistant")
 st.markdown("Ask questions based on publicly available training research papers.")
 
 # === Load API key from secrets.toml ===
