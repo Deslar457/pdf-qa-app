@@ -67,33 +67,62 @@ with st.expander("📘 Disclaimer: About the Data Used"):
     This application uses Retrieval-Augmented Generation (RAG) to answer questions based on **publicly available research papers** in the field of strength, power, and hypertrophy training.  
     The app currently includes insights from the following works:
 
-    -This app uses Retrieval-Augmented Generation (RAG) to answer questions based on **open-access and institutionally accessed research papers** in the fields of strength, hypertrophy, and sprint training.  
 
-    The current knowledge base includes the following works:
+### References
 
-    - *A Meta-Analysis of the Effects of Strength Training on Physical Fitness in Dancers*  
-    - *A Randomized Controlled Trial of Unresisted vs Heavily Resisted Sprint Training in Youth Rugby Players*  
-    - *A Systematic Review on Resistance and Plyometric Training Effects on Youth Athletes*  
-    - *Effects of Eccentric Resistance Training on Physical Fitness in Youth Athletes – A Systematic Review*  
-    - *Maximal Strength Development During Concurrent Endurance & Resistance Training – Meta-Analysis*  
-    - *Free Weights vs Machines for Hypertrophy and Jump Performance – A Systematic Review*  
-    - *Sprint Training at Different Speeds: Neuromuscular & Running Economy Effects*  
-    - *Autoregulation Methods for Hypertrophy Training*  
-    - *Effects of Complex Training on Running Economy & Strength*  
-    - *Resistance Training in Adolescent Swimmers – A Systematic Review*  
-    - *Effects of Resistance Training Modalities on Male Adult Muscle Hypertrophy – Meta-Analysis*  
-    - *Sprint and Endurance Concurrent Training in Endurance Athletes – A Meta Review*  
-    - *Effects of Resistance Training Load on Youth Athletes – Meta-Analysis*  
-    - *Jump Squat Performance Based on Load in Rugby Players – Comparative Study*  
-    - *Sprint Training in Rugby: Practical Applications – Systematic Review*  
-    - *Concurrent Endurance & Resistance Training in Women – Systematic Review*  
-    - *Training Practices of Brazilian Olympic Sprint & Jump Coaches*  
-    - *Effects of Sprint Training Modes on Rugby Union Players – Systematic Review*  
-    - *High vs Low Load Resistance Training for Hypertrophy – Meta-Analysis*  
-    - *Autoregulation Strategies in Resistance Training – Meta-Analysis*  
-    - *Physiological Effects of Strength and Sprint Training – A Meta Review*  
-    - *Training Effects on Sprint Performance in Elite Athletes – Meta-Analysis*  
-    - *Effects of Sprint Training on Speed & Agility in Basketball Players – Review*  
-    - *Field & Resistance Training Loads in Pre-Season Rugby – Positional Comparisons* 
-    These sources are provided strictly for educational purposes.
-    """)
+1. **Schoenfeld, B.J.** (2010). *The mechanisms of muscle hypertrophy and their application to resistance training*. *J Strength Cond Res*.
+
+2. **Schoenfeld, B.J., Ogborn, D., Krieger, J.W.** (2016). *Resistance Training Volume Enhances Muscle Hypertrophy But Not Strength in Trained Men*. *Med Sci Sports Exerc*.
+
+3. **Grgic, J., Schoenfeld, B.J., Latella, C.** (2019). *Resistance training frequency and skeletal muscle hypertrophy: A review*. *Sports Med*.
+
+4. **Krzysztofik, M., Wilk, M., Wojdala, G., Gołaś, A.** (2019). *Maximizing muscle hypertrophy: A systematic review of advanced resistance training techniques and methods*. *J Hum Kinet*.
+
+5. **Suchomel, T.J., Nimphius, S., Stone, M.H.** (2016). *The importance of muscular strength: Training considerations*. *Sports Med*.
+
+6. **Weakley, J.J.S., Mann, B., Banyard, H.G., et al.** (2021). *Velocity-based training: From theory to application*. *Strength Cond J*.
+
+7. **McBride, J.M., Cormie, P., Deane, R.** (2007). *Power vs strength-power jump squat training: Influence on the load-power relationship*. *J Strength Cond Res*.
+
+8. **Rumpf, M.C., Lockie, R.G., Cronin, J.B., Jalilvand, F.** (2016). *Effect of different sprint training methods: A brief review*. *J Strength Cond Res*.
+
+9. **Petrakos, G., Morin, J.B., Egan, B.** (2016). *Resisted sled sprint training: A systematic review*. *Sports Med*.
+
+10. **Barr, M.J., Sheppard, J.M., Agar-Newman, D.J., Newton, R.U.** (2014). *Transfer effect of strength and power training to the sprinting kinematics of international rugby players*. *J Strength Cond Res*.
+
+11. **Bazyler, C.D., Abbott, H., Bellon, C.R., et al.** (2017). *Strength training for endurance athletes: Theory to practice*. *Strength Cond J*.
+
+12. **Loturco, I., Kobal, R., Kitamura, K., et al.** (2015). *Predicting the maximum dynamic strength in bench press: The high precision of the bar velocity approach*. *J Strength Cond Res*.
+
+13. **Wilson, J.M., Marin, P.J., Rhea, M.R., et al.** (2012). *Concurrent training: A meta-analysis examining interference of aerobic and resistance exercises*. *J Strength Cond Res*.
+
+14. **Tufano, J.J., Brown, L.E., Haff, G.G.** (2017). *Theoretical and practical aspects of different cluster set structures: A systematic review*. *J Strength Cond Res*.
+
+15. **Sands, W.A., Stone, M.H., McNeal, J.R., et al.** (2006). *Flexibility enhancement with vibration: Acute and long-term*. *Med Sci Sports Exerc*.
+
+16. **Gonzalez, A.M., Hoffman, J.R., Stout, J.R., et al.** (2016). *Intramuscular anabolic signaling and endocrine response following resistance exercise: Impact of hydration status*. *J Strength Cond Res*.
+
+17. **Grgic, J., Schoenfeld, B.J.** (2018). *Are the hypertrophic adaptations to high and low-load resistance training muscle fiber type specific?*. *Physiol Int*.
+
+18. **Ratamess, N.A., Alvar, B.A., Evetoch, T.K., et al.** (2009). *Progression models in resistance training for healthy adults*. *Med Sci Sports Exerc*.
+
+19. **Folland, J.P., Williams, A.G.** (2007). *The adaptations to strength training: Morphological and neurological contributions to increased strength*. *Sports Med*.
+
+20. **Stone, M.H., O’Bryant, H.S., Garhammer, J.** (1981). *A hypothetical model for strength training*. *J Sports Med Phys Fitness*.
+
+21. **Stone, M.H., Sanborn, K., O'Bryant, H.S., et al.** (2003). *Maximum strength-power-performance relationships in collegiate throwers*. *J Strength Cond Res*.
+
+22. **Hackett, D.A., Johnson, N.A., Halaki, M., Chow, C.M.** (2013). *A novel scale to assess resistance-exercise effort*. *J Sports Sci*.
+
+23. **Goto, K., Ishii, N., Kizuka, T., Takamatsu, K.** (2004). *The impact of metabolic stress on hormonal responses and muscular adaptations*. *Med Sci Sports Exerc*.
+
+24. **DeWeese, B.H., Sams, M.L., Serrano, A.J.** (2015). *The nature of periodization and its application for training*. *Strength Cond J*.
+
+25. **Bartolomei, S., Hoffman, J.R., Merni, F., et al.** (2014). *Effect of different rest intervals on the strength-hypertrophy relationship*. *J Strength Cond Res*.
+
+26. **Issurin, V.B.** (2008). *Block periodization versus traditional training theory: A review*. *J Sports Med Phys Fitness*.
+
+27. **Fry, A.C.** (2004). *The role of resistance exercise intensity on muscle fibre adaptations*. *Sports Med*.
+
+28. **Zatsiorsky, V.M., Kraemer, W.J.** (2006). *Science and Practice of Strength Training* (2nd ed.). Human Kinetics.
+""")
